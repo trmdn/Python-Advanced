@@ -11,21 +11,21 @@ reward = int(input())
 bullet_in_mag = mag_max
 bullet_shot = 0
 
-while bullets in locks:
+while bullets and locks:
     bullet = bullets.pop()
     lock = locks.popleft()
-    
+
     if bullet <= lock:
         print("Bang!")
     else:
         print("Ping!")
         locks.appendleft(lock)
-    
+
     bullet_in_mag -= 1
     bullet_shot += 1
 
     if bullet_in_mag == 0 and bullets:
-        bullets_in_mag = mag_max if len(bullets) >= mag_max else len(bullets)
+        bullet_in_mag = mag_max if len(bullets) >= mag_max else len(bullets)
         print("Reloading!")
 
 if locks:
