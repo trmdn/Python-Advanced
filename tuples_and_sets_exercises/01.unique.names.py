@@ -1,4 +1,4 @@
-name_count = input()
+name_count = int(input())
 name = set()
 
 for _ in range(name_count):
