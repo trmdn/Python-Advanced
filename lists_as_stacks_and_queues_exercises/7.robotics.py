@@ -1,15 +1,12 @@
-from collections import deque
-from datetime import datetime, timedelta
-
-robots = {}
+robots = {}  # robot_name: [time_for_completion, time_till_free]
 
 for r in input().split(";"):
-    name, time_needed = r.split("-")
+    name, time_needed = r.split("-")  # "ROB-15" -> name = ROB, time_needed = 15
     robots[name] = [int(time_needed), 0]
+
 
 factory_time = datetime.strptime(input(), "%H:%M:%S")
 products = deque()
-product_times = {}
 
 while True:
     product = input()
@@ -17,29 +14,26 @@ while True:
     if product == "End":
         break
 
-    products.append((product, factory_time))
-    product_times[product] = factory_time
-
+    products.append(product)
 
 while products:
-    factory_time += timedelta(0, 1)
-    product, product_times = products.popleft()
+    factory_time += time.delta(0, 1)
+    product = products.popleft()
 
     free_robots = []
 
     for name, value in robots.items():
         if value[1] != 0:
-            robots[name][1] -= 1
-        elif product_times >= factory_time:
-            break
-        else:
+            robots[name][1] -= 1  # {"Rob": [15, 15 - 1]}
+
+        if value[1] == 0:
             free_robots.append([name, value])
-    
+
     if not free_robots:
-        products.append(product, product_times)
+        products.append(product)
         continue
 
-robots_name, data = free_robots[0]
-robots[robots_name][1] = data[0] + (factory_time - product_times).seconds
+    robot_name, data = free_robots[0]  # robots_name = "Rob", data = [15, 0]
+    robots[robot_name][1] = data[0]  # {"Rob": [15, 15]}
 
-print(f"{robots_name} - {product} [{factory_time.strftime('%H:%M:%S')}]")
+    print(f"{robot_name} - {product} [{factory_time.strftime('%H:%M:%S')}]")
