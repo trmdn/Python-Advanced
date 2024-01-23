@@ -8,7 +8,7 @@ total_honey = 0
 
 functions = {
     "*": lambda a, b: a * b,
-    "/": lambda a, b: a / b,
+    "/": lambda a, b: a / b if b != 0 else 0,
     "+": lambda a, b: a + b,
     "-": lambda a, b: a - b,
 }

@@ -30,3 +30,4 @@ else:
     print("Not enough milkshakes.")
 
 print(f"Chocolate: {', '.join(str(x) for x in chocolates) or 'empty'}")
+print(f"Milk: {', '.join(str(x) for x in cups_of_milk) or 'empty'}")
