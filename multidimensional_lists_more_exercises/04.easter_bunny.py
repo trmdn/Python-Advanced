@@ -4,7 +4,7 @@ matrix = []
 bunny_pos = []
 bunny_path = []
 
-best_dir = None
+best_direction = None
 max_collected_eggs = float('-inf')
 
 directions = {
