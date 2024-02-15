@@ -51,7 +51,7 @@ while True:
     
     elif symbol == "A":
         matrix[desired_row][desired_col] = "P"
-        print(f"Pizza delivered on time! Next order...")
+        print(f"Pizza is delivered on time! Next order...")
         break
 
     elif symbol == "-":
